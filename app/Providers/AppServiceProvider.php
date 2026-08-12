@@ -11,6 +11,7 @@ use App\Modules\Portefeuille\Services\LedgerService;
 use App\Modules\Trading\Contracts\MoteurCotationContract;
 use App\Modules\Trading\Services\AmmMoteurCotationService;
 use App\Services\NotificationDispatcherService;
+use Dedoc\Scramble\Scramble;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -33,6 +34,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Sert la doc API (Swagger/OpenAPI, via Scramble) à la racine du site,
+        // et le spec JSON sur /docs/api.json.
+        Scramble::configure()->expose(
+            ui: '/',
+            document: 'docs/api.json',
+        );
     }
 }

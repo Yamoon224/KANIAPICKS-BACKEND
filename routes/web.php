@@ -1,7 +1,4 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
+// La documentation API (Swagger/OpenAPI, générée par Scramble) est servie sur
+// `/` — voir la configuration dans App\Providers\AppServiceProvider::boot().
