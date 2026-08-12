@@ -18,7 +18,7 @@ class MarcheController extends Controller
             ->when(! $request->has('statut'), fn ($q) => $q->where('statut', 'publie'))
             ->when($request->string('categorie')->isNotEmpty(), fn ($q) => $q->where('categorie', $request->string('categorie')))
             ->orderByDesc('created_at')
-            ->paginate(20);
+            ->paginate(10);
 
         return MarcheResource::collection($marches);
     }
